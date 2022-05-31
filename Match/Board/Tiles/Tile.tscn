@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Match/Board/Tiles/Tile.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32.5, 33 )
+
+[node name="Tile" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Tile_Area" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="Tile_Area"]
+margin_right = 64.0
+margin_bottom = 64.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Tile_Area"]
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
+mouse_filter = 2
+border_color = Color( 0, 0.65098, 0.0705882, 1 )
+border_width = 2.0
+editor_only = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile_Area"]
+position = Vector2( 31.5, 32 )
+shape = SubResource( 2 )
+
+[connection signal="mouse_entered" from="Tile_Area" to="." method="_on_Tile_Area_mouse_entered"]
+[connection signal="mouse_exited" from="Tile_Area" to="." method="_on_Tile_Area_mouse_exited"]
